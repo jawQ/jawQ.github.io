@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="你了解你的HTTP请求有多辛苦吗？？？"><meta name="keywords" content="HTTP"><meta name="author" content="JawQ_,undefined"><meta name="copyright" content="JawQ_"><title>你了解你的HTTP请求有多辛苦吗？？？ | JawQ_</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.4.3"><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  localSearch: undefined
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求与响应"><span class="toc-number">1.</span> <span class="toc-text">HTTP请求与响应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number"></span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number"></span> <span class="toc-text">背景:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP参考模型"><span class="toc-number"></span> <span class="toc-text">TCP/IP参考模型:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录："><span class="toc-number"></span> <span class="toc-text">目录：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求"><span class="toc-number"></span> <span class="toc-text">HTTP请求:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP响应"><span class="toc-number"></span> <span class="toc-text">HTTP响应:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number"></span> <span class="toc-text">总结：</span></a></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/JawQ.png"></div><div class="author-info__name text-center">JawQ_</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">5</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">13</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">关于JawQ：</div><a class="author-info-links__name text-center" href="https://juejin.im/user/58b39f0e2f301e00680d71f0" target="_blank">掘金</a><a class="author-info-links__name text-center" href="https://www.zhihu.com/people/JawQ/activities" target="_blank">知乎</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://drscdn.500px.org/photo/190999695/q%3D80_m%3D2000/v2?webp=true&amp;sig=6a33b0c508276793c72000aea63faee914a2de85b1ac6e6cc98d2d8ffe1e5abc)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">JawQ_</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/Tags">Tags</a></span></div><div id="post-info"><div id="post-title">你了解你的HTTP请求有多辛苦吗？？？</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-10</time><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">2,065</span><span class="post-meta__separator">|</span><span>Reading time: 6 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><h3 id="HTTP请求与响应"><a href="#HTTP请求与响应" class="headerlink" title="HTTP请求与响应"></a>HTTP请求与响应</h3><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>作为一名合格的前端,每天会应对无数的网络请求。<br>所以，了解这些网络底层是怎么从源发送过来的，接收源的又是如何处理的，对你的工作中的调试是有质的提升的。<br>刚好最近希望系统的学习下，就选择了工作中较常见的HTTP请求与响应。<br>有错误的可以通过下面二维码的联系方式联系我，欢迎指点错误。</p>
+<hr>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h2><p>互联网上相关联的协议，集合起来可以有个叫法叫“TCP/IP协议族”。<br><a id="more"></a><br>我们只要了解其中的HTTP协议，就很够用了。<br>那这个协议族里有个比较重要的点，就是分层。<br>从上往下分呢，分别是应用层，传输层，网络层和网络数据链路层。<br>等等阅读时可以参考”TCP/IP参考模型”图来理解。</p>
+<hr>
+<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型:"></a>TCP/IP参考模型:</h2><p><img src="https://wangten.com/public/TCP&amp;IP.jpg" alt="TCP/IP结构模型"></p>
+<hr>
+<h2 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h2><blockquote>
+<ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>链路层</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求:"></a>HTTP请求:</h2><ol>
+<li><p>应用层:<br>该层里包含很多常见的协议，如ftp协议，smtp协议，还有本篇主角HTTP协议。<br>当一个HTTP请求被发出时，通常是由发送方（客户端）发起，那么此时是到达了”TCP/IP参考模型”中的应用层的。<br>其中起作用的是HTTP协议，该协议生成了针对目标（也就是接收方服务器）的HTTP请求报文（包含了请求行，请求头部，有时还带有请求体，具体见下一篇详细的解释），并发往下一层。<br>注意，这时候的报文还是完整的。<br><strong>小结： 应用层是用来生成报文的。</strong></p>
+</li>
+<li><p>传输层:<br>当HTTP请求穿过应用层后，就是到达了传输层了。该层内主要作用是将应用层中的HTTP协议带来的完整报文进行处理，然后再传输。<br>其中，为了传输方便，TCP协议将应用层的HTTP协议带来的一串完整的请求报文，按序号分割成多个报文段，并在各个报文上打上标记序号以及端口号,形成IP数据包，最后再将一个个处理完的报文片段传输给网络层进行定位解析，为发送做准备。<br>注意，这时候是片段了。<br><strong>小结： 传输层是用来切割报文的。</strong></p>
+</li>
+<li><p>网络层（IP层）：<br>这里的网络，并不是我们平时理解的网络信号的网络，这里指的是一种结构模型层。</p>
+<blockquote>
+<ul>
+<li>首先，要先解释下其中两个难点区分，就是IP地址和MAC地址。</li>
+<li>IP地址是Internet协议地址,是逻辑地址,也就是抽象的，是每个Internet包给的，动态的，可以不同的。</li>
+<li>而MAC地址却是物理地址,也就是实际存在的,由设备的网卡提供的,而且一般不能改变的，也就是固定的了。</li>
+<li>通俗地讲，IP地址可以理解为你家门牌号，而MAC地址相当于你个人身份证。</li>
+<li>两者并没有必然关系。</li>
+</ul>
+</blockquote>
+<p> 当到达网络层后，这时候才是整个“TCP/IP参考模型”结构体系的关键，因为它决定了发往哪里去，按什么顺序发。<br>其底层使用的就是因特网协议，也就是IP协议(如果你想联网)。<br>它将客户端和服务器端这两端通过路由作为桥梁，IP协议作为通信工具，连接起来进行通信。<br>其中，路由的作用就是：为接收到的处理好的请求报文(也就是数据包)找到相对应的目的主机（接收方），可以理解成指路人。</p>
+<p> 那为什么路由就能知道接收到的报文要发往哪里呢？</p>
+<p> 原来，该报文里就包含了目标主机的IP地址。<br> 而IP地址含有两个部分，一个是网络地址，一个是主机地址。<br> 因此，通过对方的IP地址，不仅可以判断出对方是否和本机在一个网络内，还能获取对方主机地址。</p>
+<p> 那么，路由处理分两种情况，</p>
+<p> <strong><em>第一</em></strong>，针对不需要跨网段的，也就是在局域网内：<br> 这时候交给”交换机”处理。<br> 这，就体现了mac地址的作用了,因为mac地址是物理地址，硬件地址，由网卡提供的，一般无法改变。<br> 而网络层中路由借助“ARP协议”，会将目标主机（目标服务器）的IP地址,解析成目标主机对应的MAC地址与arp表对应，然后，告诉交换机，然后交换机会根据自己的转发表中的mac地址和mac地址对应的端口号一一对应,然后进行转发。如果在转发表内找到了对应端口号，那么恭喜，你的快递是顺丰的，交换机直接一步到位发送到目标主机；如果找不到，呵呵，你估计贪便宜，找了韵达了…它就每个端口都转发一次，总会中一次的，很粗暴的方法，自然效率偏低了。</p>
+<p> <strong><em>第二</em></strong>，针对需要跨网段，也就是进入因特网了：<br> 这时候交给网关处理。<br> 这时候就需要使用请求报文中的IP地址，来寻找目标主机的IP位置，接着告诉网关IP地址，网关进行匹配相应的路由，然后在路由表中寻找对应的IP地址，然后根据IP地址中的网络地址，判断是跨网还是内网，再决定要往哪个网络跳转。<br> 还有，路由主要使用的协议即为IP协议。所以，网络层也有别的叫法，就是IP层。</p>
+<p> <strong>到这,你可能会有这样的疑问?</strong><br> 既然有了IP地址能定位,那为什么还要MAC地址呢?<br> 这里借助知乎一个回答:</p>
+<pre><code>IP地址在三层中定义，具有三层意义，MAC地址在二层中定义，具备二层意义。在同一网段内，由于不需要跨三层，因此使用MAC地址寻址，但是一旦跨网段（即跨越三层环境），此时则需要IP地址来寻址。
+</code></pre><p> 这样一来，路由发往网络的通信请求就准备齐全了，剩下就是让下一个层发送数据了。<br> 但是记住，网络层是不传输的，只是用来确定路线（定位）的，也对应了上面说的指路人。<br> <strong>小结： 网络层是用来定位的。</strong></p>
+</li>
+<li><p>链路层:<br>该层可以说是和设备,也就是物理层（OSI模型）最接近的一层了。<br>那么就是说，离服务器接口最近了。<br>但是呢，该层是不干活的，为什么呢？你有见过领导还写业务代码吗？<br>当然，也不是啥都没干。<br>链路层作用中的其中作用之一就体现在检测你这些发过来的信息到达有没错误？也就是测试。<br>测试什么呢？确定物理地址，源地址目的地址等问题。<br>当测试无误后呢，就交给服务器处理了。<br>服务器对得到的报文进行解析处理，然后返回带有响应数据的响应，于是，响应就开始了。<br><strong>小结： 链路层是用来检测数据的。</strong></p>
+</li>
+</ol>
+<hr>
+<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应:"></a>HTTP响应:</h2><p>具体过程就相当于刚刚来的路，重走一次，只不过这次是倒着走了。<br>从链路层–&gt;网络层–&gt;传输层–&gt;应用层—&gt;就到客户端了，通常是浏览器，就这样，一次请求响应就完成了。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
+<p>一次完整的HTTP请求,从发送到接收,是需要经历: 应用层–&gt;传输层–&gt;网络层–&gt;链路层，甚至到了物理层的。</p>
+</blockquote>
+<hr>
+<p>下一篇，我会对一次HTTP请求中的报文进行详细解释，也就是说如果你想知道HTTP请求中带了哪些东西，可以期待我下一篇文章。</p>
+<hr>
+<p>个人能力有限，有错误的麻烦扫描下面二维码联系我（回复公众号我就能收到），进行勘误，共同进步。</p>
+<p><img src="https://wangten.com/public/JawQpublic.jpg" alt="个人公众号二维码"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">JawQ_</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wujiaqiang.com/2018/02/05/http/">http://wujiaqiang.com/2018/02/05/http/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTTP/">HTTP</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://wangten.com/public/alipay.jpg"><div class="post-qr-code__desc">支付宝-打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://wangten.com/public/wechat.jpg"><div class="post-qr-code__desc">微信-打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/03/06/specification/"><i class="fa fa-chevron-left">  </i><span>简析-commonJS&amp;AMD&amp;CMD</span></a></div><div class="next-post pull-right"><a href="/2018/01/28/configHttps/"><span>从http到https</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By JawQ_</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.4.3"></script><script src="/js/fancybox.js?version=1.4.3"></script><script src="/js/sidebar.js?version=1.4.3"></script><script src="/js/copy.js?version=1.4.3"></script><script src="/js/fireworks.js?version=1.4.3"></script><script src="/js/transition.js?version=1.4.3"></script><script src="/js/scroll.js?version=1.4.3"></script><script src="/js/head.js?version=1.4.3"></script></body></html>
