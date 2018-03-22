@@ -34,7 +34,7 @@
 <p><span id="AssemblyLine"></span></p>
 <h3 id="渲染流水线："><a href="#渲染流水线：" class="headerlink" title="渲染流水线："></a>渲染流水线：</h3><p><strong>大体上看</strong>：发送请求HTML文档–&gt;等待HTML文档响应–&gt;接收HTML文档的字符流响应–&gt;渲染页面。</p>
 <p><span id="lodingPrinciple"></span></p>
-<h3 id="浏览器渲染机制-图："><a href="#浏览器渲染机制-图：" class="headerlink" title="浏览器渲染机制 - 图："></a>浏览器渲染机制 - 图：</h3><p><strong>细节结合图来看，可能更容易理解：</strong><br><img src="https://wangten.com/public/BrowerLodingDeep/browerLoding.png" alt="enter image description here"></p>
+<h3 id="浏览器渲染机制-图："><a href="#浏览器渲染机制-图：" class="headerlink" title="浏览器渲染机制 - 图："></a>浏览器渲染机制 - 图：</h3><p><strong>细节结合图来看，可能更容易理解：</strong><br><img src="https://wangten.com/public/blogImg/BrowerLodingDeep/browerLoding.png" alt="enter image description here"></p>
 <h4 id="细节流程："><a href="#细节流程：" class="headerlink" title="细节流程："></a><strong>细节流程</strong>：</h4><ol>
 <li>发送HTML文档请求—&gt;&gt;接收HTML文档字符流响应；</li>
 <li>HTML的解析—&gt;&gt;开始DOM树结构的构建；</li>
@@ -74,7 +74,7 @@
 <blockquote>
 <p>Render-Tree - 示例图，废话和图更配哦~</p>
 </blockquote>
-<p><img src="https://wangten.com/public/BrowerLodingDeep/RenderTreeDeep.png" alt="Render-Tree-Deep"></p>
+<p><img src="https://wangten.com/public/blogImg/BrowerLodingDeep/RenderTreeDeep.png" alt="Render-Tree-Deep"></p>
 <h4 id="Render树又是啥？"><a href="#Render树又是啥？" class="headerlink" title="Render树又是啥？"></a><strong>Render树又是啥？</strong></h4><p>我们页面看到的到底是什么树?<br>你首先要先知道Render-tree和DOM-tree以及CSS-tree之间的关系，可以这么看他们关系：<strong>Render-tree = Attachment =  Dom-tree + Style-Rules</strong>。<br>什么意思？</p>
 <p>其实Render树就是我们页面看到的效果了，渲染树，是通过DOM树和CSS树连接而成的一棵树。上面挂了一个个 Html-Dom以及附着在 HTML-Dom上的Css-Dom。</p>
 <p>其中，Render树每个节点都是一个对象，该对象结构上呈现<strong>矩形</strong>形状，其实这个就是控制台看到的盒子模型。</p>
@@ -109,6 +109,6 @@
 <p><span id="summary"></span></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>照着js的<strong>万物接对象</strong>的理念下，把<strong>浏览器渲染一个网页的过程</strong>想象成一个大对象。<br>而构建这个对象的结构，就相当于是初始化网页。<br>会经过这样一个过程：<br>构建DOM树，CSS-Style，合成Render树，然后计算Render树上的属性，即layout，paint，最后添加Display。</p>
 <p>一个文档（网页）就这么构建完成了。</p>
-<p><img src="https://wangten.com/public/BrowerLodingDeep/browerS.jpg" alt="browerS"></p>
+<p><img src="https://wangten.com/public/blogImg/BrowerLodingDeep/browerS.jpg" alt="browerS"></p>
 <hr>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">JawQ_</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wujiaqiang.com/2017/12/22/browerLoading/">http://wujiaqiang.com/2017/12/22/browerLoading/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://wangten.com/public/alipay.jpg"><div class="post-qr-code__desc">支付宝-打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://wangten.com/public/wechat.jpg"><div class="post-qr-code__desc">微信-打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/01/06/specification/"><i class="fa fa-chevron-left">  </i><span>简析-CommonJS&amp;AMD&amp;CMD</span></a></div><div class="next-post pull-right"><a href="/2017/11/09/JSONP/"><span>吹吹 JSONP</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By JawQ_</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.4.3"></script><script src="/js/fancybox.js?version=1.4.3"></script><script src="/js/sidebar.js?version=1.4.3"></script><script src="/js/copy.js?version=1.4.3"></script><script src="/js/fireworks.js?version=1.4.3"></script><script src="/js/transition.js?version=1.4.3"></script><script src="/js/scroll.js?version=1.4.3"></script><script src="/js/head.js?version=1.4.3"></script></body></html>
